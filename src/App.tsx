@@ -1,25 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Landing from "./components/Landing";
+import TeamMemberList from "./features/teams/components/TeamMemberList";
+import UserProfile from "./features/users/components/UserProfile";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route
+          path="/user"
+          element={<UserProfile user={{ userId: "111", username: "Dummy" }} />}
+        />
+        <Route path="/teams" element={<TeamMemberList teamId="1234" />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
